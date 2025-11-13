@@ -1,0 +1,196 @@
+/* Custom CSS for Smart Light Control */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --success-color: #4cc9f0;
+  --light-bg: #f8f9fa;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.device-card {
+  background: white;
+  border: none;
+  transition: var(--transition);
+  overflow: hidden;
+  position: relative;
+}
+
+.device-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.device-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.device-card:hover::before {
+  transform: scaleX(1);
+}
+
+.device-name {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Light Bulb Animation */
+.light-bulb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  transition: var(--transition);
+}
+
+.bulb-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px 10px 0 0;
+  z-index: 2;
+}
+
+.bulb-bottom {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: #f8f9fa;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.filament {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 15px;
+  background: #6c757d;
+  z-index: 3;
+  transition: var(--transition);
+}
+
+.glow {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(76, 201, 240, 0.2);
+  filter: blur(10px);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 0;
+}
+
+/* ON State */
+.light-bulb.on .bulb-bottom {
+  background: #fff9c4;
+  box-shadow: 0 0 20px rgba(255, 235, 59, 0.7);
+}
+
+.light-bulb.on .filament {
+  background: #ffeb3b;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.8);
+}
+
+.light-bulb.on .glow {
+  opacity: 1;
+  background: rgba(255, 235, 59, 0.3);
+}
+
+/* OFF State */
+.light-bulb.off .bulb-bottom {
+  background: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.light-bulb.off .filament {
+  background: #6c757d;
+}
+
+/* Custom Switch */
+.form-check-input.device-switch {
+  width: 3.5em;
+  height: 1.8em;
+  background-color: #adb5bd;
+  border-color: #adb5bd;
+  cursor: pointer;
+}
+
+.form-check-input.device-switch:checked {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.form-check-input.device-switch:focus {
+  box-shadow: 0 0 0 0.25rem rgba(76, 201, 240, 0.25);
+}
+
+/* Status Badge */
+.status-badge {
+  font-size: 0.85rem;
+  padding: 0.5em 1em;
+  border-radius: 50px;
+  transition: var(--transition);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .device-card {
+    padding: 1.5rem !important;
+  }
+  
+  .light-bulb {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .bulb-bottom {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+  }
+  
+  .filament {
+    top: 25px;
+    height: 12px;
+  }
+  
+  .glow {
+    width: 30px;
+    height: 30px;
+    top: 25px;
+  }
+}
