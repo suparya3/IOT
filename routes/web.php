@@ -37,3 +37,6 @@
     // route untuk kontrol 6 object
     Route::get('devices',[DeviceController::class, 'index'])->name('devices.index');
     Route::post('/devices/toggle', [DeviceController::class, 'toggle'])->name('devices.toggle');
+
+    // Lampu  kk
+    Route::get('/get-lampu', [DeviceController::class, 'getLampu']);

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Dht22', function (Blueprint $table) {
+        Schema::create('dht22s', function (Blueprint $table) {
             $table->id();
             $table->float('temperature');
             $table->float('humidity');

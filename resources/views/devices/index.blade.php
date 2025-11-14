@@ -27,7 +27,7 @@
               </div>
             </div>
             
-            <h5 class="device-name mb-3 fw-semibold">Lampu {{ $loop->iteration }}</h5>
+            <h5 class="device-name mb-3 fw-semibold">{{ $device->nama }}</h5>
 
             <div class="form-check form-switch d-flex justify-content-center mb-3">
               <input 

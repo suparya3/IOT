@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Device;
 
 class DeviceController extends Controller
@@ -26,4 +27,22 @@ class DeviceController extends Controller
             'status' => $device->status
         ]);
     }
+
+ public function getLampu()
+{
+    $devices = Device::all();
+
+    // Jika tidak ada data
+    if ($devices->isEmpty()) {
+        return response()->json([
+            'nama'=> $devices->nama,
+            'status' => $devices->status,
+            'message' => 'Tidak ada device'
+        ], 404);
+    }
+
+    // Return semua lampu dalam bentuk array
+    return response()->json($devices);
+}
+
 }
